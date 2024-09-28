@@ -1,21 +1,22 @@
 import Entidades.*;
 import Enum.*;
-
 public class Main {
     public static void main(String[] args) {
-        Autor autor1 = new Autor("Autor 1", "pais 1");
-        Autor autor2 = new Autor("Autor 2", "pais 2");
+        Author author1 = new Author("Rafa", "Spain");
+        Author author2 = new Author("Rafa", "France");
 
-        Pintura pintura1 = new Pintura("pintura 1", autor1, TipoPintura.Oleo, "Lienzo");
-        Escultura escultura1 = new Escultura("escultura 1", autor2, Materiales.Bronce, Estilos.Neoclasico);
+        Painting painting1 = new Painting(
+                "painting 1", author1, PaintingTypeEnum.Oil, "format");
+        Sculpture sculpture1 = new Sculpture(
+                "sculpture 1", author2, MaterialsEnum.Bronze, StylesEnum.Neoclassical);
 
-        Sala sala1 = new Sala("sala 1");
-        sala1.addObra(pintura1);
-        sala1.addObra(escultura1);
+        Gallery gallery1 = new Gallery("gallery 1");
+        gallery1.addArtwork(painting1);
+        gallery1.addArtwork(sculpture1);
 
-        Museo museo = new Museo("museo 1", "d1", "Madrid", "España");
-        museo.addSala(sala1);
+        Museum museum = new Museum("museum 1", "s", "Madrid", "Spain");
+        museum.addGallery(gallery1);
 
-        museo.mostrarDetallesMuseo();
+        museum.showMuseumDetails();
     }
 }
