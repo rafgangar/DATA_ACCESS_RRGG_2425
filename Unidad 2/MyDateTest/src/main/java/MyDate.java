@@ -5,7 +5,7 @@ public class MyDate {
 
     public MyDate(int day, int month, int year) {
         if (!isValidDate(day, month, year)) {
-            throw new IllegalArgumentException("Fecha no válida.");
+            throw new IllegalArgumentException("The date is not valid");
         }
         this.day = day;
         this.month = month;
@@ -26,21 +26,21 @@ public class MyDate {
 
     public void setDay(int day) {
         if (!isValidDate(day, this.month, this.year)) {
-            throw new IllegalArgumentException("Día no válido para la fecha.");
+            throw new IllegalArgumentException("The day is not valid");
         }
         this.day = day;
     }
 
     public void setMonth(int month) {
         if (!isValidDate(this.day, month, this.year)) {
-            throw new IllegalArgumentException("Mes no válido.");
+            throw new IllegalArgumentException("The month is not valid");
         }
         this.month = month;
     }
 
     public void setYear(int year) {
         if (!isValidDate(this.day, this.month, year)) {
-            throw new IllegalArgumentException("Año no válido.");
+            throw new IllegalArgumentException("The year is not valid");
         }
         this.year = year;
     }
