@@ -1,11 +1,11 @@
-package scanner.ej3;
+package activities33.ej4;
 
 import java.util.Scanner;
 
 public class DateValidator {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        scanner.ej3.MyDate date = new scanner.ej3.MyDate();
+        MyDate date = new MyDate();
 
         try {
             System.out.print("Enter month (1-12): ");
@@ -26,4 +26,3 @@ public class DateValidator {
         }
     }
 }
-

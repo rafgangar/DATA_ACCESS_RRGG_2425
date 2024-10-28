@@ -1,4 +1,4 @@
-package scanner.ej4;
+package activities33.ej4;
 
 public class MyDate {
     private int day;

@@ -1,4 +1,4 @@
-package filewriter.ej1;
+package activities54.ej1;
 
 import java.io.File;
 import java.io.FileWriter;

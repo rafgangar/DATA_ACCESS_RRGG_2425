@@ -1,4 +1,4 @@
-package contactList;
+package activities71;
 
 import java.io.*;
 import java.util.ArrayList;

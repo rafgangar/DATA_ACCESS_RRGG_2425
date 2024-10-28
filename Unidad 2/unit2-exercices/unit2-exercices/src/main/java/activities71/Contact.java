@@ -1,6 +1,4 @@
-package contactList;
-
-import java.io.Serializable;
+package activities71;
 
 public class Contact {
     private String name;

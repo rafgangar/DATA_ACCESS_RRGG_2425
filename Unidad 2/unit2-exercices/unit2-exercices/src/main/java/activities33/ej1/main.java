@@ -1,4 +1,4 @@
-package scanner.ej1;
+package activities33.ej1;
 
 import java.util.Scanner;
 
