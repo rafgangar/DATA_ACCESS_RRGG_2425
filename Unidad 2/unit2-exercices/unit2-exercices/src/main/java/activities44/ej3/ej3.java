@@ -4,35 +4,43 @@ import java.io.FileInputStream;
 import java.io.IOException;
 
 public class ej3 {
+    static int byteToInt(byte b) {
+        return (b < 0) ? (b + 256) : b;
+    }
+
     public static void main(String[] args) {
-        String filePath = "C:\\Users\\rafae\\Desktop\\DAM\\Tema-2\\image.bmp";  // Replace with the path to your BMP file
+        String filePath = "C:\\Users\\rafae\\Desktop\\DAM\\Tema-2\\image.bmp";
 
-        try (FileInputStream fileInputStream = new FileInputStream(filePath)) {
-            byte[] header = new byte[54];
-            if (fileInputStream.read(header) != 54) {
-                System.out.println("Error");
-                return;
-            }
 
-            int fileSize = ((header[5] & 0xFF) << 24) | ((header[4] & 0xFF) << 16) |
-                    ((header[3] & 0xFF) << 8) | (header[2] & 0xFF);
+        try (FileInputStream fis = new FileInputStream(filePath)) {
+            byte[] header = new byte[88];
+            fis.read(header);
 
-            int width = ((header[21] & 0xFF) << 24) | ((header[20] & 0xFF) << 16) |
-                    ((header[19] & 0xFF) << 8) | (header[18] & 0xFF);
-
-            int height = ((header[25] & 0xFF) << 24) | ((header[24] & 0xFF) << 16) |
-                    ((header[23] & 0xFF) << 8) | (header[22] & 0xFF);
-
-            int bitsPerPixel = ((header[29] & 0xFF) << 8) | (header[28] & 0xFF);
-
-            System.out.println("BMP File Information:");
+            // File size (bytes 0 to 3)
+            int fileSize = byteToInt(header[0]) +
+                    (byteToInt(header[1]) * 256) +
+                    (byteToInt(header[2]) * 65536) +
+                    (byteToInt(header[3]) * 16777216);
             System.out.println("File Size: " + fileSize + " bytes");
-            System.out.println("Width: " + width + " pixels");
-            System.out.println("Height: " + height + " pixels");
-            System.out.println("Bits Per Pixel: " + bitsPerPixel);
+
+            // Width of the image (bytes 8 to 9)
+            int width = byteToInt(header[8]) +
+                    (byteToInt(header[9]) * 256);
+            System.out.println("Image width: " + width + " pixels");
+
+            // Height of the image (bytes 10 to 11)
+            int height = byteToInt(header[10]) +
+                    (byteToInt(header[11]) * 256);
+            System.out.println("Image height: " + height + " pixels");
+
+            // Bits per pixel (bytes 12 to 13)
+            int bitsPerPixel = byteToInt(header[12]) +
+                    (byteToInt(header[13]) * 256);
+            System.out.println("Bits per Pixel: " + bitsPerPixel);
 
         } catch (IOException e) {
-            System.out.println("Error reading BMP file: " + e.getMessage());
+            System.out.println("Error : " + e.getMessage());
         }
     }
+
 }
