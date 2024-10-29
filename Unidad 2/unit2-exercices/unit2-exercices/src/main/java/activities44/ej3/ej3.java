@@ -4,7 +4,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 
 public class ej3 {
-    static int byteToInt(byte b) {
+    private static int byteToInt(byte b) {
         return (b < 0) ? (b + 256) : b;
     }
 
